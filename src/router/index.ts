@@ -4,8 +4,20 @@ import HomeView from '../views/HomeView.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'layout',
+    component: () => import('../components/layouts/BaseContainer.vue'),
+    children: [
+      { 
+        path: '/home',
+        name: 'home',
+        component: HomeView
+      },
+      { 
+        path: '/form',
+        name: 'form',
+        component: () => import('../views/FormView.vue')
+      },
+    ],
   },
   {
     path: '/about',
